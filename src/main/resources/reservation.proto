@@ -1,5 +1,5 @@
 syntax = 'proto3';
-package com.chalabi.EtudeDeCas;
+package com.daigham.EtudeDeCas;
 option java_package = "com.daigham.EtudeDeCas.stubs";
 option java_multiple_files = true;
 message Client {
