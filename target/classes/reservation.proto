@@ -1,0 +1,53 @@
+syntax = 'proto3';
+package com.chalabi.EtudeDeCas;
+option java_package = "com.chalabi.EtudeDeCas.stubs";
+option java_multiple_files = true;
+message Client {
+  int64 id = 1;
+  string nom = 2;
+  string prenom = 3;
+  string email = 4;
+  string telephone = 5;
+}
+message Chambre {
+  int64 id = 1;
+  string type = 2;
+  double prix = 3;
+  bool disponible = 4;
+}
+message Reservation {
+  int64 id = 1;
+  Client client = 2;
+  Chambre chambre = 3;
+  string dateDebut = 4;
+  string dateFin = 5;
+  string preferences = 6;
+}
+message ReservationList {
+  repeated Reservation reservations = 1;
+}
+message GetReservationRequest {
+  int64 id = 1;
+}
+message DeleteReservationRequest {
+  int64 id = 1;
+}
+message UpdateReservationRequest {
+  int64 id = 1;
+  Reservation reservation = 2;
+}
+
+message DeleteReservationResponse {
+  string message = 1;
+}
+message Empty {}
+
+service ReservationService{
+  rpc CreateReservation(Reservation) returns (Reservation);
+  rpc GetReservationById(GetReservationRequest) returns (Reservation);
+  rpc ListReservations(Empty) returns (ReservationList);
+  rpc UpdateReservation(UpdateReservationRequest) returns (Reservation);
+  rpc DeleteReservation(DeleteReservationRequest) returns (DeleteReservationResponse);
+
+
+}
